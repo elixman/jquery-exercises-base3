@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Jquery exercices base 3</title>
         <link rel="stylesheet" href="style.css">
+        <script src="jquery.js"></script>
     </head>
     <body>
         <h1>Exercices Jquery base 3</h1>
@@ -13,11 +14,47 @@
         <!-------------------------------------------- Exercice 1 -------------------------------------->
         <h3><em>Exercice 1</em></h3>
         <p>Céer un bouton et un champ texte dans lequel on affiche le nombre de clics sur le bouton.</p>
+            <button id=clickme>Click me!</button>
+
+            <script>
+              $(document).ready(function() {
+
+                var count = 0;
+
+                $("#clickme").click(function() {
+                  count++;
+                  $("#counter").html("My current count is: "+count);
+                });
+              });
+
+            </script>
+
+            <div id="counter"></div>
 
         <hr>
         <!-------------------------------------------- Exercice 2 -------------------------------------->
         <h3>Exercice 2</h3>
         <p>Céer 2 boutons ("+" et "-") et un champ texte dans lequel on augmente ou baisse le chiffre en fonction des boutons cliqués</p>
+            <button id=plus>+</button><button id=less>-</button>
+
+            <script>
+              $(document).ready(function() {
+
+                var count2 = 0;
+
+                $("#plus").click(function() {
+                  count2++;
+                  $("#counter2").html("My current count is: "+count2);
+                });
+                $("#less").click(function() {
+                  count2--;
+                  $("#counter2").html("My current count is: "+count2);
+                });
+              });
+
+            </script>
+
+            <div id="counter2"></div>
 
         <hr>
         <!-------------------------------------------- Exercice 3 -------------------------------------->
@@ -32,6 +69,51 @@
             <li>Bouton 5 : fait réaparaître le rectangle</li>
         </ul>
         </p>
+
+            <button id=button1>Increase height</button>
+            <button id=button2>Switch to green</button>
+            <button id=button3>Back to black</button>
+            <button id=button4>Disappear</button>
+            <button id=button5>Reappear</button>
+
+            <article class=rectangle></article>
+
+            <script>
+
+              $(document).ready(function() {
+
+                var height = 50;
+
+                $('#button1').click(function(){   
+                  height = height + 10;
+                    if(height>100){
+                      height=10;}
+                      var heightpx = height+"px";
+                      $(".rectangle").css({"height":heightpx})
+                }); 
+
+                $('#button2').click(function(){
+                  $('.rectangle').css({
+                  "border-color":"green",})
+                });
+
+                $('#button3').click(function(){
+                  $('.rectangle').css({
+                  "border-color":"black",})
+                });
+
+                $('#button4').click(function(){
+                  $('.rectangle').css({
+                  "border-style":"hidden",})
+                });
+
+                $('#button5').click(function(){
+                  $('.rectangle').css({
+                  "border-style":"solid",})
+                });
+                });
+
+            </script>
 
 
         <hr>
@@ -48,6 +130,40 @@
         </p>
         <hr>
 
+
+                  <input type="text" id="setNumber"></input>
+                  <button id="playButton">Let's play</button>
+
+                  <p id="result">Result :</p>
+
+                <script>
+
+                  $(document).ready(function(){
+
+                      var randomNumber = Math.floor(Math.random()*100);
+                      var attempt = 0;
+
+                      $("#playButton").click(function()
+                      {
+                            var number=$("#setNumber").val();
+                            attempt++;
+
+                            if (number > randomNumber)
+                            {
+                              $("#result").html("It's less than that");
+                            }
+                            else if (number < randomNumber)
+                            {
+                              $("#result").html("It's more than that");
+                            }
+                            else
+                            {
+                              $("#result").html("Gongratulation! You found it after "+attempt+" attempt(s)");
+                            }
+                       });
+                   });
+
+                </script>
 
 
     </body>
